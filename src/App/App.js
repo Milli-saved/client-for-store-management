@@ -8,20 +8,41 @@ import DeptHead from "../views/Dept-Head";
 import Employee from "../views/Employee";
 import Finance from "../views/Finance";
 import Storekeeper from "../views/StoreKeeper";
+import { Box, CssBaseline } from "@mui/material";
+import Dashboard from "../views/Admin/Dashboard";
+import ManageEmployee from "../views/Admin/ManageEmployees";
+import Roles from "../views/Admin/Roles";
+import Store from "../views/Admin/Store";
+import Report from "../views/Admin/Report";
+import FAQ from "../views/Admin/FAQ";
+import NewRole from "../views/Admin/NewRoles";
+import EditProfile from "../views/Admin/EditProfile";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<OutLet />}>
-          <Route path="" element={<Login />} />
-        </Route>
-        <Route path="/admin" element={<Admin />}></Route>
-        <Route path="/depthead" element={<DeptHead />}></Route>
-        <Route path="/employee" element={<Employee />}></Route>
-        <Route path="/finance" element={<Finance />}></Route>
-        <Route path="/storekeeper" element={<Storekeeper />}></Route>
-      </Routes>
+      <CssBaseline />
+      <Box className="app">
+        <Routes>
+          <Route path="/" element={<OutLet />}>
+            <Route path="" element={<Login />} />
+          </Route>
+          <Route path="/admin" element={<Admin />}>
+            <Route path="" element={<Dashboard />} />
+            <Route path="manageemp" element={<ManageEmployee />} />
+            <Route path="roles" element={<Roles />} />
+            <Route path="newroles" element={<NewRole />} />
+            <Route path="store" element={<Store />} />
+            <Route path="report" element={<Report />} />
+            <Route path="faq" element={<FAQ />} />
+            <Route path="editprofile" element={<EditProfile />} />
+          </Route>
+          <Route path="/depthead" element={<DeptHead />}></Route>
+          <Route path="/employee" element={<Employee />}></Route>
+          <Route path="/finance" element={<Finance />}></Route>
+          <Route path="/storekeeper" element={<Storekeeper />}></Route>
+        </Routes>
+      </Box>
     </BrowserRouter>
   );
 }

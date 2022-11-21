@@ -1,7 +1,22 @@
-import Header from "../../components/Header";
+import { Box } from "@mui/material";
+
+import Topbar from "../Global/Topbar";
+import Sidebar from "../Global/Sidebar";
+import { Outlet } from "react-router-dom";
 
 const Admin = () => {
-  return <Header title="Admin" subtitle="This is the Admin page." />;
+  return (
+    <Box>
+      <Topbar style={{ position: "fixed" }} />
+
+      <Box style={{ display: "flex" }}>
+        <Sidebar />
+        <Box style={{ marginLeft: "10px" }}>
+          <Outlet />
+        </Box>
+      </Box>
+    </Box>
+  );
 };
 
 export default Admin;
