@@ -10,6 +10,7 @@ import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import { BatchPredictionOutlined } from "@mui/icons-material";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   return (
@@ -113,6 +114,13 @@ const Sidebar = () => {
               title="Store"
               to="/admin/store"
               icon={<PersonOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
+              title="Batch"
+              to="/admin/batch"
+              icon={<BatchPredictionOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
