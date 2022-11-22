@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Global/Loader";
@@ -24,19 +24,23 @@ const columns = [
       return (
         <Box
           width="60%"
-          m="0 auto"
+          // m="0 auto"
           p="5px"
           display="flex"
-          justifyContent="center"
         >
-          {accountType === "admin" && <AdminPanelSettingsOutlined />}
-          {accountType === "storemanager" && <StoreOutlined />}
-          {accountType === "employee" && <AccountBoxOutlined />}
+          <Button>
+            {accountType === "admin" && <AdminPanelSettingsOutlined />}
+            {accountType === "storemanager" && <StoreOutlined />}
+            {accountType === "employee" && <AccountBoxOutlined />}
+          </Button>
         </Box>
       );
     },
   },
 ];
+// const DetailButtonhandler = (row) => {
+//   console.log("this is selected.", row);
+// };
 
 const ManageEmployee = () => {
   const dispatch = useDispatch();
@@ -58,14 +62,16 @@ const ManageEmployee = () => {
       </Card>
       <Box>
         {fetchUserLoading ? <Loader /> : undefined}
-        {fetchUserHasError ? <Alert text={fetchUserError} severity="error" /> : undefined}
+        {fetchUserHasError ? (
+          <Alert text={fetchUserError} severity="error" />
+        ) : undefined}
         {user ? (
           <DataGrid
             style={{ margin: "20px" }}
             getRowId={(row) => row._id}
             pageSize={5}
             rowsPerPageOptions={[5]}
-            autoHeight="true"
+            autoHeight={true}
             columns={columns}
             rows={user}
           />
