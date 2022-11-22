@@ -17,10 +17,14 @@ const Popup = (props) => {
     >
       <DialogTitle style={{ paddingRight: "0px" }}>
         <div style={{ display: "flex" }}>
-          <Typography variant="h5" component="div" style={{ flexGrow: 1 }}>
+          <Typography variant="h3" component="div" style={{ flexGrow: 1 }}>
             {title}
           </Typography>
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              setOpenPopup(false);
+            }}
+          >
             <CloseOutlined />
           </IconButton>
         </div>
