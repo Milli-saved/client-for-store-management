@@ -17,9 +17,14 @@ import ProfileDetails from "../../components/ProfileDetails";
 const ManageEmployee = () => {
   const dispatch = useDispatch();
   const [openPopup, setOpenPopup] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   const DetailButtonhandler = (row) => {
     console.log("this is selected.", row);
+    setSelectedUser({
+      ...selectedUser,
+      selectedUser: row,
+    });
     setOpenPopup(true);
   };
 
@@ -89,7 +94,8 @@ const ManageEmployee = () => {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        <ProfileDetails />
+        <ProfileDetails user={selectedUser} />
+        {/* <h4>hello</h4> */}
       </Popup>
     </Box>
   );
