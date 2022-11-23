@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { Box, Card, CardContent, Typography, Button } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Typography,
+  Button,
+  Grid,
+} from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Global/Loader";
@@ -69,9 +76,22 @@ const ManageEmployee = () => {
       >
         <CardContent>
           <Typography variant="h3">Manage Employees</Typography>
-          <span>Can view access levels of employees.</span>
+          <Typography style={{marginLeft: "25px"}} varinat="h5" color="primary">
+            Can view access levels of employees.
+          </Typography>
         </CardContent>
       </Card>
+      <Box style={{ display: "flex", justifyContent: "space-around" }}>
+        <Button variant="outlined" color="primary">
+          Add New Employee
+        </Button>
+        <Button variant="outlined" color="warning">
+          Add New Employee
+        </Button>
+        <Button variant="outlined" color="error">
+          Add New Employee
+        </Button>
+      </Box>
       <Box>
         {fetchUserLoading ? <Loader /> : undefined}
         {fetchUserHasError ? (
@@ -90,12 +110,11 @@ const ManageEmployee = () => {
         ) : undefined}
       </Box>
       <Popup
-        title="Employee Detail"
+        // title="Employee Detail"
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
         <ProfileDetails user={selectedUser} />
-        {/* <h4>hello</h4> */}
       </Popup>
     </Box>
   );

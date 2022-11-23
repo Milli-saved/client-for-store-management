@@ -1,19 +1,65 @@
-import { Box, Typography, Card, CardContent, Grid } from "@mui/material";
+import { Instagram, LinkedIn, Twitter } from "@mui/icons-material";
+import { Box, Typography, Card, CardContent, Grid, Button, IconButton } from "@mui/material";
+import JohnDoe from "../Images/johndoe.jpg";
 
 const ProfileDetails = (props) => {
   const { user } = props;
-  console.log(user.selectedUser);
+  let currentUser = user.selectedUser;
   return (
-    <Box>
+    <Box style={{ width: "800px" }}>
       <Grid container>
         <Grid>
-          <Card sx={{ maxWidth: 800 }}>
+          <Card style={{ width: "800px" }}>
             <CardContent>
-              <Typography gutterBottom variant="h4" component="div">
-                Employee Details can be seen here.
+              <Box style={{ display: "flex", justifyContent: "center" }}>
+                <img
+                  src={JohnDoe}
+                  alt="no internet connection"
+                  width="120px"
+                  height="auto"
+                  style={{ borderRadius: "50px" }}
+                />
+              </Box>
+              <Typography
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "10px",
+                }}
+                gutterBottom
+                variant="h5"
+                component="div"
+              >
+                Name: {currentUser.firstName} {currentUser.lastName}
               </Typography>
-              <Box>
-                <h1>hleloe</h1>
+              <Typography
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "10px",
+                }}
+                gutterBottom
+                variant="h5"
+                component="div"
+              >
+                Job Role: {currentUser.accountType}
+              </Typography>
+              <Box
+                style={{
+                  display: "flex",
+                  justifyContent: "space-around",
+                  mT: "5px",
+                }}
+              >
+                <IconButton size="large" >
+                  <Instagram />
+                </IconButton>
+                <IconButton size="large" >
+                  <Twitter />
+                </IconButton>
+                <IconButton size="large" >
+                  <LinkedIn />
+                </IconButton>
               </Box>
             </CardContent>
           </Card>
