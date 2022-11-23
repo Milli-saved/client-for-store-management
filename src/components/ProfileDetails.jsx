@@ -1,5 +1,5 @@
 import { Instagram, LinkedIn, Twitter } from "@mui/icons-material";
-import { Box, Typography, Card, CardContent, Grid, Button, IconButton } from "@mui/material";
+import { Box, Typography, Card, CardContent, Grid, IconButton } from "@mui/material";
 import JohnDoe from "../Images/johndoe.jpg";
 
 const ProfileDetails = (props) => {

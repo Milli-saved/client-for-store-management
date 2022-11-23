@@ -6,7 +6,7 @@ const Header = ({ title, subtitle }) => {
       <Typography
         variant="h2"
         color="#3e423f"
-        fontWetigh="bold"
+        fontWeight="bold"
         sx={{ m: "5px" }}
       >
         {title}

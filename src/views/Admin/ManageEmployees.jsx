@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  Grid,
-} from "@mui/material";
+import { Box, Card, CardContent, Typography, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../Global/Loader";
@@ -76,7 +69,11 @@ const ManageEmployee = () => {
       >
         <CardContent>
           <Typography variant="h3">Manage Employees</Typography>
-          <Typography style={{marginLeft: "25px"}} varinat="h5" color="primary">
+          <Typography
+            style={{ marginLeft: "25px" }}
+            varinat="h5"
+            color="primary"
+          >
             Can view access levels of employees.
           </Typography>
         </CardContent>
