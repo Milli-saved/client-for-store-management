@@ -29,12 +29,13 @@ const batchSlice = createSlice({
       state.fetchBatchLoading = false;
       state.fetchBatchHasError = false;
       state.fetchBatchError = null;
-      console.log("fetch batch", action.payload.data);
+      // console.log("fetch batch", action.payload.data);
+      state.batch = action.payload.data.batch;
     },
     [getAllBatches.rejected]: (state, action) => {
       state.fetchBatchLoading = false;
       state.fetchBatchHasError = true;
-      console.log("batch fetch error", action.payload.error);
+      console.log("batch fetch error", action);
     },
   },
 });

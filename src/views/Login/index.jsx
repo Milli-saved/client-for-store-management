@@ -7,12 +7,14 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 import BgPic from "../../Images/world.png";
+import { useDispatch, useSelector } from "react-redux";
+import { logIn } from "../../store/Reducer/UserReducer";
 
 const initialValues = {
   email: "",
@@ -24,11 +26,30 @@ const dataSchema = yup.object().shape({
 });
 
 const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { token, currentUser, loginLoading, loginHasError, loginError } =
+    useSelector((state) => state.user);
+
   const onSubmitHandler = (values) => {
     console.log(values);
-    navigate("/admin");
+    dispatch(logIn(values));
+    // navigate("/admin");
   };
+
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("authorization", token)
+      switch (currentUser.accountType) {
+        case "admin":
+          navigate("/admin")
+          break
+        case "storemanager":
+          navigate("/storekeeper");
+      }
+    }
+  },[token])
 
   return (
     <Box style={{ height: "100%", backgroundImage: `url(${BgPic})` }}>

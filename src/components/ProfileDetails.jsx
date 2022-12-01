@@ -1,6 +1,14 @@
 import { Instagram, LinkedIn, Twitter } from "@mui/icons-material";
-import { Box, Typography, Card, CardContent, Grid, IconButton } from "@mui/material";
-import JohnDoe from "../Images/johndoe.jpg";
+import {
+  Box,
+  Typography,
+  Card,
+  CardContent,
+  Grid,
+  IconButton,
+  Button,
+} from "@mui/material";
+import JohnDoe from "../Images/man.jpg";
 
 const ProfileDetails = (props) => {
   const { user } = props;
@@ -17,7 +25,7 @@ const ProfileDetails = (props) => {
                   alt="no internet connection"
                   width="120px"
                   height="auto"
-                  style={{ borderRadius: "50px" }}
+                  style={{ borderRadius: "100px" }}
                 />
               </Box>
               <Typography
@@ -51,15 +59,23 @@ const ProfileDetails = (props) => {
                   mT: "5px",
                 }}
               >
-                <IconButton size="large" >
+                <IconButton size="large">
                   <Instagram />
                 </IconButton>
-                <IconButton size="large" >
+                <IconButton size="large">
                   <Twitter />
                 </IconButton>
-                <IconButton size="large" >
+                <IconButton size="large">
                   <LinkedIn />
                 </IconButton>
+              </Box>
+              <Box style={{ display: "flex", justifyContent: "space-around", padding: "20px" }}>
+                <Button variant="contained" color="success">
+                  Edit Profile
+                </Button>
+                <Button variant="contained" color="error">
+                  Delete Profile
+                </Button>
               </Box>
             </CardContent>
           </Card>

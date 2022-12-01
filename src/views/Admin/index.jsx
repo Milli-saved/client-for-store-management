@@ -11,7 +11,13 @@ const Admin = () => {
 
       <Box style={{ display: "flex" }}>
         <Sidebar />
-        <Box style={{ marginLeft: "10px", width:"100%"}}>
+        <Box
+          style={{
+            paddingLeft: "10px",
+            width: "100%",
+            height: "100%",
+          }}
+        >
           <Outlet />
         </Box>
       </Box>

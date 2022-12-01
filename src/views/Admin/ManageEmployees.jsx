@@ -13,6 +13,8 @@ import { getAllUsers } from "../../store/Reducer/UserReducer";
 import Alert from "../Global/Alert";
 import Popup from "../Global/Popup";
 import ProfileDetails from "../../components/ProfileDetails";
+import "./index.css";
+
 
 const ManageEmployee = () => {
   const dispatch = useDispatch();
@@ -56,15 +58,16 @@ const ManageEmployee = () => {
     },
   ];
 
+  const { user, fetchUserLoading, fetchUserHasError, fetchUserError } =
+    useSelector((state) => state.user);
+  
   useEffect(() => {
     dispatch(getAllUsers());
   }, []);
-  const { user, fetchUserLoading, fetchUserHasError, fetchUserError } =
-    useSelector((state) => state.user);
 
   return (
     <Box width="100%">
-      <Card
+      <Card className="shadow"
         style={{ display: "flex", justifyContent: "center", margin: "13px" }}
       >
         <CardContent>

@@ -7,9 +7,29 @@ import {
 } from "@mui/icons-material";
 
 import Logo from "../../Images/danenergylogo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../../store/Reducer/UserReducer";
+import { useEffect } from "react";
 
 const Topbar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { token } = useSelector((state) => state.user);
+
+  const logOutHandler = () => {
+    localStorage.removeItem("authorization");
+    dispatch(logOut());
+    navigate("/");
+  };
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [token]);
+
   return (
     <div
       style={{
@@ -38,10 +58,10 @@ const Topbar = () => {
             <SettingsOutlined />
           </Link>
         </IconButton>
-        <IconButton>
-          <Link to="/" style={{ color: "grey" }}>
-            <PersonOutline />
-          </Link>
+        <IconButton onClick={logOutHandler} style={{ color: "grey" }}>
+          {/* <Link to="/" style={{ color: "grey" }}> */}
+          <PersonOutline />
+          {/* </Link> */}
         </IconButton>
       </Box>
     </div>

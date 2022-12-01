@@ -15,7 +15,6 @@ import Roles from "../views/Admin/Roles";
 import Store from "../views/Admin/Store";
 import Report from "../views/Admin/Report";
 import FAQ from "../views/Admin/FAQ";
-import NewRole from "../views/Admin/NewRoles";
 import EditProfile from "../views/Admin/EditProfile";
 import Batch from "../views/Admin/Batch";
 
@@ -28,11 +27,10 @@ function App() {
           <Route path="/" element={<OutLet />}>
             <Route path="" element={<Login />} />
           </Route>
-          <Route path="/admin" element={<Admin />}> 
+          <Route path="/admin" exact element={<Admin />}>
             <Route path="" element={<Dashboard />} />
             <Route path="manageemp" element={<ManageEmployee />} />
             <Route path="roles" element={<Roles />} />
-            <Route path="newroles" element={<NewRole />} />
             <Route path="store" element={<Store />} />
             <Route path="report" element={<Report />} />
             <Route path="faq" element={<FAQ />} />
