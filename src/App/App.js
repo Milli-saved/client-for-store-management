@@ -17,6 +17,7 @@ import Report from "../views/Admin/Report";
 import FAQ from "../views/Admin/FAQ";
 import EditProfile from "../views/Admin/EditProfile";
 import Batch from "../views/Admin/Batch";
+import Products from "../views/Admin/Products";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
             <Route path="faq" element={<FAQ />} />
             <Route path="editprofile" element={<EditProfile />} />
             <Route path="batch" element={<Batch />} />
+            <Route path="products" element={<Products />} />
           </Route>
           <Route path="/depthead" element={<DeptHead />}></Route>
           <Route path="/employee" element={<Employee />}></Route>

@@ -74,7 +74,7 @@ const Store = () => {
         />
       ) : undefined}
       <AddToStorePopup openPopup={addToStore} setOpenPopup={setAddToStore}>
-        <AddToStore />
+        <AddToStore close={setAddToStore} />
       </AddToStorePopup>
     </Box>
   );

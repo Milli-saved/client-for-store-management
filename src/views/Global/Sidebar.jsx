@@ -104,6 +104,13 @@ const Sidebar = () => {
               Store
             </Typography>
             <Item
+              title="Products"
+              to="/admin/products"
+              icon={<PersonOutlinedIcon />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+            <Item
               title="Store"
               to="/admin/store"
               icon={<PersonOutlinedIcon />}

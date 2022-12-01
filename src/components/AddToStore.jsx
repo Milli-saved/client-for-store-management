@@ -7,16 +7,37 @@ import {
   Typography,
 } from "@mui/material";
 import { Formik } from "formik";
-const AddToStore = () => {
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import * as yup from "yup";
+import { addNewStore, getAllStore } from "../store/Reducer/StoreReducer";
+
+const AddToStore = (props) => {
+  const { close } = props;
+  const dispatch = useDispatch();
   const initialValues = {
     store_name: "",
     latitude: "",
     longtude: "",
     location: "",
   };
+
+  const storeSchema = yup.object().shape({
+    store_name: yup.string().required("Required"),
+    latitude: yup.number().required("Required."),
+    longtude: yup.number().required("Required."),
+    location: yup.string().required("Required."),
+  });
+
   const handleFormSubmit = (values) => {
-    console.log(values);
+    dispatch(addNewStore(values));
+    setTimeout(() => {
+      dispatch(getAllStore());
+    }, 3000);
+    dispatch(getAllStore());
+    close(false);
   };
+  const handleRestButton = () => {};
   return (
     <Box style={{ width: "800px" }}>
       <Card
@@ -28,8 +49,12 @@ const AddToStore = () => {
           </Typography>
         </CardContent>
       </Card>
-      <Formik onSubmit={handleFormSubmit} initialValues={initialValues}>
-        {({ values, handleChange, handleSubmit }) => (
+      <Formik
+        onSubmit={handleFormSubmit}
+        initialValues={initialValues}
+        validationSchema={storeSchema}
+      >
+        {({ values, errors, handleChange, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
             <Box
               m="20px"
@@ -45,6 +70,8 @@ const AddToStore = () => {
                 name="store_name"
                 value={values.store_name}
                 onChange={handleChange}
+                error={!!errors.store_name}
+                helperText={errors.store_name}
                 sx={{ gridColumn: "span 4" }}
               />
               <TextField
@@ -55,6 +82,8 @@ const AddToStore = () => {
                 value={values.latitude}
                 name="latitude"
                 onChange={handleChange}
+                error={!!errors.latitude}
+                helperText={errors.latitude}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -65,6 +94,8 @@ const AddToStore = () => {
                 value={values.longtude}
                 name="longtude"
                 onChange={handleChange}
+                error={!!errors.longtude}
+                helperText={errors.longtude}
                 sx={{ gridColumn: "span 2" }}
               />
               <TextField
@@ -74,6 +105,8 @@ const AddToStore = () => {
                 label="Location"
                 value={values.location}
                 name="location"
+                error={!!errors.location}
+                helperText={errors.location}
                 onChange={handleChange}
                 sx={{ gridColumn: "span 4" }}
               />
@@ -81,7 +114,11 @@ const AddToStore = () => {
                 <Button type="submit" color="success" variant="outlined">
                   Submit Form
                 </Button>
-                <Button color="error" variant="outlined">
+                <Button
+                  onClick={handleRestButton}
+                  color="error"
+                  variant="outlined"
+                >
                   Reset
                 </Button>
               </Box>
