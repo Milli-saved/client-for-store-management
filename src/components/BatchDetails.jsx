@@ -7,7 +7,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Formik } from "formik";
 
 const BatchDetails = (props) => {
   let dataFetched = props.selectedBatch.selectedBatch;
